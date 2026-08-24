@@ -1,0 +1,92 @@
+---
+title: How to Run PostgreSQL Using Docker
+description: Run a consistent local PostgreSQL database in seconds and connect to it with pgAdmin.
+slug: how-to-run-postgresql-using-docker
+publishedAt: 2023-02-05
+updatedAt: 2026-08-22
+language: en
+tags:
+  - Web Development
+  - Docker
+  - PostgreSQL
+draft: false
+---
+
+Back when I started learning programming—especially web development—tutorials often required a database. Some developers used SQLite, which is great when you do not want to deal with a more sophisticated database such as MySQL or PostgreSQL.
+
+PostgreSQL always felt difficult to set up. There could be compatibility issues, operating-system differences, or mistakes made during a long installation process. It does not have to be that way anymore.
+
+## What is Docker?
+
+Since Docker was announced, it has changed many parts of the development ecosystem. It simplifies deployment and makes applications available locally with a single command, without requiring you to manually manage every dependency or missing package.
+
+Docker describes itself as a platform for developing, shipping, and running applications in containers. The way I like to think about it is as a programmable, virtualized operating environment with ready-to-use system images.
+
+You can configure the environment through a Dockerfile, run commands, and assign environment variables. Its main selling point is consistency: your application runs inside the operating environment you specify, with the packages and versions you expect. No more “it worked on my machine.”
+
+## Why run PostgreSQL with Docker?
+
+Installing PostgreSQL directly may require multiple packages, compatible versions, and system-specific configuration. Docker makes the environment consistent. With an official ready-made image, you can have PostgreSQL running within seconds.
+
+## Install Docker
+
+Before you can run PostgreSQL, install Docker for your operating system. Follow Docker’s official instructions for [Linux](https://docs.docker.com/desktop/install/linux-install/), [Windows](https://docs.docker.com/desktop/install/windows-install/), or [macOS](https://docs.docker.com/desktop/install/mac-install/).
+
+## Start the PostgreSQL database
+
+Confirm that Docker is installed:
+
+```bash
+docker --version
+```
+
+You should get output similar to:
+
+```text
+Docker version 20.10.21, build baeda1f
+```
+
+Now run PostgreSQL:
+
+```bash
+docker run \
+  --name postgres-db \
+  -e POSTGRES_PASSWORD=password \
+  -p 5432:5432 \
+  -d postgres
+```
+
+Here is what each part does:
+
+- `--name postgres-db` names the new container `postgres-db`.
+- `-e POSTGRES_PASSWORD=password` sets the password used to connect to the database. Choose a more secure password for real work.
+- `-p 5432:5432` exposes the container’s PostgreSQL port on the same port on your computer, making it available to apps such as pgAdmin.
+- `-d postgres` runs the official PostgreSQL image in detached mode. Without a version tag, Docker pulls the latest available image.
+
+After running the command, Docker prints a long container identifier. Confirm the container is running:
+
+```bash
+docker ps
+```
+
+This lists the currently running containers. You should see the creation time, exposed port, image, and the `postgres-db` name.
+
+## Connect to the database
+
+There are several ways to connect. I prefer [pgAdmin](https://www.pgadmin.org/download/), a graphical administration tool for PostgreSQL.
+
+After opening pgAdmin:
+
+1. Right-click **Servers** in the left sidebar.
+2. Choose **Register → Server**.
+3. Give the server a memorable name.
+4. Open the **Connection** tab.
+5. Use `localhost` as the host and `5432` as the port.
+6. Use `postgres` as the default username and enter the password supplied in the Docker command.
+7. Save the connection.
+
+pgAdmin should connect to the database and show the server in its sidebar.
+
+You can customize PostgreSQL further with environment variables. The [official PostgreSQL image reference](https://hub.docker.com/_/postgres) documents the available settings under “How to extend this image.”
+
+That is it: you now have a fully functional PostgreSQL database running in a consistent local environment, ready for your application.

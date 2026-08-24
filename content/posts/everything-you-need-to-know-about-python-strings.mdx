@@ -1,0 +1,119 @@
+---
+title: Everything You Need to Know About Python Strings
+description: A practical introduction to creating, indexing, slicing, combining, and inspecting strings in Python.
+slug: everything-you-need-to-know-about-python-strings
+publishedAt: 2022-06-14
+language: en
+tags:
+  - Python
+draft: false
+---
+
+## What is a string?
+
+In plain English, a string is a block of text. More technically, it is a sequence of letters, numbers, and Unicode characters—and it is a built-in data type in Python.
+
+## Creating a string
+
+To create a string in Python, define it inside double or single quotes:
+
+```python
+"Something like this"
+'This works too'
+```
+
+### Storing a string in a variable
+
+```python
+# The quotation marks are different, but these are both strings.
+some_variable_name = "Hey, this is a Python string"
+
+# Or:
+some_variable_name = 'Hey, look—a single-quote string'
+```
+
+## Indexing
+
+You can get a character from any string using its index. Python starts counting at zero, so the first letter is at index `0`:
+
+```python
+text = 'hey look a single quote string'
+
+print(text[0]) # -> h
+print(text[1]) # -> e
+print(text[2]) # -> y
+```
+
+### Reverse indexing
+
+You can also read values from the end of the string. Use `-1` to get the last character, `-2` for the second-to-last character, and so on:
+
+```python
+text = 'hey look a single quote string'
+
+print(text[-1]) # -> g
+print(text[-2]) # -> n
+print(text[-3]) # -> i
+```
+
+## Getting multiple characters
+
+To get a subset of text, specify the starting and ending indexes. The ending index is not included in the result:
+
+```python
+text = 'whilelab'
+
+print(text[0:5]) # -> while
+print(text[3:6]) # -> lel
+
+# Negative indexing can exclude characters from the end.
+print(text[0:-3]) # -> while
+```
+
+## Connecting two strings
+
+Use the `+` operator to concatenate strings:
+
+```python
+text = 'Python tutorials on '
+text_2 = 'YouTube'
+
+full_sentence = text + text_2
+print(full_sentence) # -> Python tutorials on YouTube
+```
+
+## Multiplying a string by a number
+
+Multiplication repeats a string:
+
+```python
+greetings = 'Hey!'
+repeated_greetings = greetings * 3
+print(repeated_greetings) # -> Hey!Hey!Hey!
+```
+
+## Getting the length of a string
+
+Python has a built-in `len()` function that returns the length of a sequence, including a string:
+
+```python
+sentence = 'Everything'
+len(sentence) # -> 10
+```
+
+## Checking whether text appears in a string
+
+Use the built-in `in` keyword to check whether a string is part of another string:
+
+```python
+text = "Sun is directly above Earth's equator"
+print('directly' in text) # -> True
+
+print('moon' in text) # -> False
+
+print('sun' in text) # -> False, because the check is case-sensitive
+
+print('ab' in text) # -> True; it matches the 'ab' in 'above'
+```
+
+These basics—creation, indexing, slicing, concatenation, repetition, length checks, and membership checks—cover the operations you will use constantly when working with text in Python.

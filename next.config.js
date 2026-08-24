@@ -1,42 +1,62 @@
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+const legacyRedirects = [
+  {
+    source: '/everything-you-need-to-know-about-python-strings',
+    destination: '/blog/everything-you-need-to-know-about-python-strings'
+  },
+  {
+    source: '/how-to-run-postgresql-using-docker',
+    destination: '/blog/how-to-run-postgresql-using-docker'
+  },
+  {
+    source: '/key-attributes-of-a-website-that-meets-the-standards-of-2022',
+    destination:
+      '/blog/key-attributes-of-a-website-that-meets-the-standards-of-2022'
+  },
+  {
+    source: '/why-you-must-have-a-website-for-your-business',
+    destination: '/blog/why-you-must-have-a-website-for-your-business'
+  },
+  {
+    source:
+      '/everything-you-need-to-know-about-python-strings-e293f4ba8be849d6a0aceba480f925aa',
+    destination: '/blog/everything-you-need-to-know-about-python-strings'
+  },
+  {
+    source:
+      '/how-to-run-postgresql-using-docker-723c2ec8bf09444ab6d512dfe3a27031',
+    destination: '/blog/how-to-run-postgresql-using-docker'
+  },
+  {
+    source:
+      '/key-attributes-of-a-website-that-meets-the-standards-of-2022-f35c6c4d951b4ba4855accbdc65fb09c',
+    destination:
+      '/blog/key-attributes-of-a-website-that-meets-the-standards-of-2022'
+  },
+  {
+    source:
+      '/why-you-must-have-a-website-for-your-business-d13ca1ac315d434c9a0246d6912f81b7',
+    destination: '/blog/why-you-must-have-a-website-for-your-business'
+  }
+]
 
-import bundleAnalyzer from '@next/bundle-analyzer'
-
-const withBundleAnalyzer = bundleAnalyzer({
-  // eslint-disable-next-line no-process-env
-  enabled: process.env.ANALYZE === 'true'
-})
-
-export default withBundleAnalyzer({
-  staticPageGenerationTimeout: 300,
+const nextConfig = {
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'www.notion.so' },
-      { protocol: 'https', hostname: 'notion.so' },
-      { protocol: 'https', hostname: 'images.unsplash.com' },
-      { protocol: 'https', hostname: 'abs.twimg.com' },
-      { protocol: 'https', hostname: 'pbs.twimg.com' },
-      { protocol: 'https', hostname: 's3.us-west-2.amazonaws.com' }
-    ],
-    formats: ['image/avif', 'image/webp'],
-    dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
+    formats: ['image/avif', 'image/webp']
   },
-
-  webpack: (config) => {
-    // Workaround for ensuring that `react` and `react-dom` resolve correctly
-    // when using a locally-linked version of `react-notion-x`.
-    // @see https://github.com/vercel/next.js/issues/50391
-    const dirname = path.dirname(fileURLToPath(import.meta.url))
-    config.resolve.alias.react = path.resolve(dirname, 'node_modules/react')
-    config.resolve.alias['react-dom'] = path.resolve(
-      dirname,
-      'node_modules/react-dom'
-    )
-    return config
+  async redirects() {
+    return legacyRedirects.map((redirect) => ({ ...redirect, permanent: true }))
   },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' }
+        ]
+      }
+    ]
+  }
+}
 
-  // See https://react-tweet.vercel.app/next#troubleshooting
-  transpilePackages: ['react-tweet']
-})
+export default nextConfig

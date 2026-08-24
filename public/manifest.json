@@ -1,6 +1,6 @@
 {
-  "name": "Next.js Notion Starter Kit",
-  "short_name": "Starter Kit",
+  "name": "Abod — Software Engineer & Creator",
+  "short_name": "Abod",
   "icons": [
     {
       "src": "/favicon.png",
@@ -18,7 +18,7 @@
       "sizes": "192x192"
     }
   ],
-  "theme_color": "#000000",
-  "background_color": "#000000",
+  "theme_color": "#f3efe4",
+  "background_color": "#f3efe4",
   "display": "standalone"
 }
