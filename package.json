@@ -19,7 +19,6 @@
     "typecheck": "tsc --noEmit",
     "test": "run-p test:*",
     "test:lint": "eslint .",
-    "test:unit": "bun test tests",
     "test:typecheck": "tsc --noEmit",
     "test:prettier": "prettier '**/*.{js,jsx,ts,tsx,css,mdx}' --check"
   },
@@ -33,7 +32,6 @@
     "react-dom": "^19.1.1",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
-    "resend": "^6.0.2",
     "zod": "^4.1.11"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 # abod.dev
 
-Abod's portfolio, project archive, and writing. The site is built with Next.js 15, React 19, local MDX content, and a small Resend contact endpoint.
+Abod's portfolio, project archive, and writing. The site is built with Next.js 15, React 19, and local MDX content.
 
 ## Local development
 
@@ -26,17 +26,9 @@ bun run build
 - Use `language: ar` for Arabic posts; the article template automatically switches to RTL layout.
 - Product captures live under `public/projects`.
 
-## Contact form
+## Contact
 
-Copy `.env.example` to `.env.local` and configure:
-
-```dotenv
-RESEND_API_KEY=
-CONTACT_TO_EMAIL=hello@abod.dev
-CONTACT_FROM_EMAIL=Abod.dev <portfolio@abod.dev>
-```
-
-The sending domain used by `CONTACT_FROM_EMAIL` must be verified in Resend. Without these values the form returns a friendly configuration message and points visitors to `hello@abod.dev`.
+The contact section links directly to `hello@abod.dev`. The address is configured in `lib/site.ts`.
 
 ## Publishing
 

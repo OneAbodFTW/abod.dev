@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { ContactForm } from '@/components/contact-form'
 import { PostCard } from '@/components/post-card'
 import { SectionHeading } from '@/components/section-heading'
 import { getAllPosts } from '@/lib/posts'
@@ -278,12 +277,11 @@ export default function HomePage() {
           </div>
           <h2>Have a hard problem or an odd idea?</h2>
           <p>
-            Tell me what you’re building, what’s stuck, and what a useful
+            Email me what you’re building, what’s stuck, and what a useful
             outcome looks like. I read every message.
           </p>
           <a href={`mailto:${site.email}`}>{site.email}</a>
         </div>
-        <ContactForm />
       </section>
     </main>
   )
