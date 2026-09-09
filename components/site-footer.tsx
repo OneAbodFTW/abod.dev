@@ -10,7 +10,7 @@ export function SiteFooter() {
       </div>
       <div>
         <p>Designed and built by {site.formalName}.</p>
-        <p>Broadcasting from Cairo to the open web.</p>
+        <p>Broadcasting to the open web.</p>
       </div>
       <div className="footer-links">
         {Object.entries(site.socials).map(([label, url]) => (

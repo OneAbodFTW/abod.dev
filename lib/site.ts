@@ -6,7 +6,6 @@ export const site = {
     'Abod is a senior software engineer, founder, and creator building useful products and teaching what he learns.',
   url: 'https://abod.dev',
   email: 'hello@abod.dev',
-  location: 'Cairo, Egypt',
   socials: {
     youtube: 'https://www.youtube.com/@abodbtw',
     x: 'https://x.com/OneAbodFTW',

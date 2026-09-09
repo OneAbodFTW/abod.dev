@@ -201,24 +201,9 @@ img {
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: 4.5rem minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   min-height: calc(100svh - 4.5rem);
   border-bottom: 1px solid var(--line-strong);
-}
-
-.hero-rail {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding-block: 2rem 8.5rem;
-  border-right: 1px solid var(--line);
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 0.57rem;
-  letter-spacing: 0.1em;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
 }
 
 .hero-main {
@@ -332,7 +317,7 @@ img {
   position: absolute;
   right: 0;
   bottom: 0;
-  left: 4.5rem;
+  left: 0;
   display: flex;
   align-items: flex-end;
   gap: clamp(0.15rem, 0.45vw, 0.45rem);
@@ -1213,12 +1198,7 @@ img {
   }
 
   .hero {
-    grid-template-columns: minmax(0, 1fr);
     min-height: calc(100svh - 4rem);
-  }
-
-  .hero-rail {
-    display: none;
   }
 
   .hero-main {
@@ -1249,7 +1229,6 @@ img {
   }
 
   .hero-frequency {
-    left: 0;
     height: 5rem;
   }
 

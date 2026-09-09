@@ -12,12 +12,6 @@ export default function HomePage() {
   return (
     <main id="main-content">
       <section className="hero" aria-labelledby="hero-title">
-        <div className="hero-rail" aria-hidden="true">
-          <span>CAI / EGY</span>
-          <span>30.0444° N</span>
-          <span>31.2357° E</span>
-        </div>
-
         <div className="hero-main">
           <div className="hero-signal">
             <span className="on-air">
@@ -88,10 +82,6 @@ export default function HomePage() {
               <div>
                 <dt>Publishing in</dt>
                 <dd>English · Arabic</dd>
-              </div>
-              <div>
-                <dt>Based in</dt>
-                <dd>{site.location}</dd>
               </div>
             </dl>
           </div>

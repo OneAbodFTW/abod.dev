@@ -24,31 +24,11 @@ export default function OpenGraphImage() {
         <div
           style={{
             display: 'flex',
-            justifyContent: 'space-between',
             fontSize: 20,
             letterSpacing: 3
           }}
         >
           <span>ABOD.DEV / LIVE SIGNAL</span>
-          <span
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 12,
-              color: '#ff5a1f'
-            }}
-          >
-            <i
-              style={{
-                display: 'flex',
-                width: 13,
-                height: 13,
-                background: '#ff5a1f',
-                borderRadius: 99
-              }}
-            />
-            CAIRO, EGYPT
-          </span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div
