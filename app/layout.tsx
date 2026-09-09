@@ -37,8 +37,16 @@ export const metadata: Metadata = {
     description: site.description
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/favicon-192x192.png'
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.png', sizes: '32x32', type: 'image/png' }
+    ],
+    shortcut: '/favicon.ico',
+    apple: {
+      url: '/favicon-192x192.png',
+      sizes: '192x192',
+      type: 'image/png'
+    }
   },
   manifest: '/manifest.json'
 }

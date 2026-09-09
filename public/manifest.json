@@ -3,6 +3,12 @@
   "short_name": "Abod",
   "icons": [
     {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    },
+    {
       "src": "/favicon.png",
       "type": "image/png",
       "sizes": "32x32"
