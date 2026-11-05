@@ -32,11 +32,13 @@ The contact section links directly to `hello@abod.dev`. The address is configure
 
 ## Publishing
 
-The site is deployed to Cloudflare Workers as static assets. Next.js generates
+The site is deployed to Cloudflare Workers with static assets. Next.js generates
 the portfolio, blog, RSS feed, robots, sitemap, social image, and 404 page into
 `out/` at build time. Project images are served directly without a runtime image
 optimizer. Cloudflare applies the legacy redirects and response headers from
-`public/_redirects` and `public/_headers`.
+`public/_redirects` and `public/_headers`. The Worker redirects HTTP requests to
+HTTPS and `www.abod.dev` to `abod.dev`, preserving the path and query string,
+then serves the generated assets.
 
 Authenticate to the intended Cloudflare account and deploy:
 
@@ -48,11 +50,13 @@ bun run deploy
 
 Use `bun run preview` to build and preview the site in Cloudflare's local runtime.
 `bun run start` serves an existing build. The worker name and asset routing are
-configured in `wrangler.jsonc`.
+configured in `wrangler.jsonc`, including custom domains for `abod.dev` and
+`www.abod.dev`. Cloudflare manages their DNS records and TLS certificates.
 
 For automatic deployments, connect this repository to Cloudflare Workers Builds,
 select `main`, set the build command to `bun run build`, and set the deploy command
 to `bunx wrangler deploy`. Install dependencies with `bun install --frozen-lockfile`.
 
-Before switching `abod.dev` and `www.abod.dev`, verify the deployed `workers.dev`
-URL, add the custom domains to the worker, and confirm valid TLS certificates.
+After deployment, verify `https://abod.dev` and confirm that
+`https://www.abod.dev` redirects to it. The `workers.dev` URL remains available
+for direct deployment checks.
