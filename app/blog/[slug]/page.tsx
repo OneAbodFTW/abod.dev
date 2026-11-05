@@ -10,6 +10,8 @@ import { site } from '@/lib/site'
 
 type PageProps = { params: Promise<{ slug: string }> }
 
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }))
 }

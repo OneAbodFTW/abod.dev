@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "abod-dev",
+  "account_id": "61de27a935e77a704642b3a720b67f03",
+  "compatibility_date": "2026-11-05",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./out",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

@@ -1,6 +1,8 @@
 import { getAllPosts } from '@/lib/posts'
 import { site } from '@/lib/site'
 
+export const dynamic = 'force-static'
+
 const escapeXml = (value: string) =>
   value.replace(/[<>&'\"]/g, (character) => {
     const entities: Record<string, string> = {

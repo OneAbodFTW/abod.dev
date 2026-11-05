@@ -32,11 +32,27 @@ The contact section links directly to `hello@abod.dev`. The address is configure
 
 ## Publishing
 
-The production service is connected to the GitHub repository on Railway. Pushing
-`main` triggers a deployment; `bun run deploy` can be used for an explicit CLI
-deployment when needed.
+The site is deployed to Cloudflare Workers as static assets. Next.js generates
+the portfolio, blog, RSS feed, robots, sitemap, social image, and 404 page into
+`out/` at build time. Project images are served directly without a runtime image
+optimizer. Cloudflare applies the legacy redirects and response headers from
+`public/_redirects` and `public/_headers`.
 
-The application listens on Railway's injected `PORT` through `next start` and
-generates the portfolio, blog, RSS, robots, sitemap, and social-image routes.
-Before pointing `abod.dev` at the service, verify both the apex and `www` DNS
-records and confirm Railway has issued a valid TLS certificate.
+Authenticate to the intended Cloudflare account and deploy:
+
+```bash
+bunx wrangler auth create abod-dev
+bunx wrangler auth activate abod-dev
+bun run deploy
+```
+
+Use `bun run preview` to build and preview the site in Cloudflare's local runtime.
+`bun run start` serves an existing build. The worker name and asset routing are
+configured in `wrangler.jsonc`.
+
+For automatic deployments, connect this repository to Cloudflare Workers Builds,
+select `main`, set the build command to `bun run build`, and set the deploy command
+to `bunx wrangler deploy`. Install dependencies with `bun install --frozen-lockfile`.
+
+Before switching `abod.dev` and `www.abod.dev`, verify the deployed `workers.dev`
+URL, add the custom domains to the worker, and confirm valid TLS certificates.
