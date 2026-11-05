@@ -7,7 +7,7 @@
   "workers_dev": true,
   "routes": [
     { "pattern": "abod.dev", "custom_domain": true },
-    { "pattern": "www.abod.dev", "custom_domain": true }
+    { "pattern": "www.abod.dev/*", "zone_name": "abod.dev" }
   ],
   "assets": {
     "directory": "./out",

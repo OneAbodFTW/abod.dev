@@ -50,8 +50,10 @@ bun run deploy
 
 Use `bun run preview` to build and preview the site in Cloudflare's local runtime.
 `bun run start` serves an existing build. The worker name and asset routing are
-configured in `wrangler.jsonc`, including custom domains for `abod.dev` and
-`www.abod.dev`. Cloudflare manages their DNS records and TLS certificates.
+configured in `wrangler.jsonc`. Cloudflare manages the custom domain and TLS
+certificate for `abod.dev`. A Worker route on `www.abod.dev/*` handles the
+canonical redirect; the existing DNS record for `www` must remain proxied by
+Cloudflare.
 
 For automatic deployments, connect this repository to Cloudflare Workers Builds,
 select `main`, set the build command to `bun run build`, and set the deploy command
